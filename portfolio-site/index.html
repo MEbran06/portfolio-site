@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manuel Branco Nardi — Software Engineer</title>
+<meta name="description" content="Portfolio of Manuel Branco Nardi — software engineering, applied AI, and embedded systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EEF1F0;
+    --panel:#FBFAF7;
+    --ink:#16222B;
+    --ink-muted:#4B5B63;
+    --accent:#E2611F;
+    --accent-2:#2F6F5E;
+    --line: rgba(22,34,43,0.14);
+    --line-soft: rgba(22,34,43,0.08);
+    --max: 920px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      repeating-linear-gradient(0deg, var(--line-soft) 0px, var(--line-soft) 1px, transparent 1px, transparent 32px),
+      repeating-linear-gradient(90deg, var(--line-soft) 0px, var(--line-soft) 1px, transparent 1px, transparent 32px),
+      var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 24px;}
+  a{color:var(--ink);}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+
+  header.topbar{
+    position:sticky; top:0; z-index:20;
+    background:rgba(238,241,240,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{
+    max-width:var(--max); margin:0 auto; padding:16px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600; font-size:15px; letter-spacing:0.01em;
+    text-decoration:none; color:var(--ink);
+  }
+  nav.toplinks{display:flex; gap:28px;}
+  nav.toplinks a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px; text-decoration:none; color:var(--ink-muted);
+    border-bottom:1px solid transparent; padding-bottom:2px;
+    transition:color .15s, border-color .15s;
+  }
+  nav.toplinks a:hover{color:var(--ink); border-color:var(--accent);}
+  .nav-toggle{display:none; background:none; border:1px solid var(--line); border-radius:2px; padding:6px 10px; font-family:'IBM Plex Mono',monospace; font-size:12px; cursor:pointer;}
+
+  .hero{padding:64px 0 48px; border-bottom:1px solid var(--line);}
+  .hero-grid{
+    display:grid; grid-template-columns: 1.5fr 1fr; gap:40px; align-items:start;
+  }
+  .hero h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700; font-size:clamp(34px, 5vw, 52px);
+    line-height:1.05; margin:0 0 14px;
+    animation: rise .6s ease both;
+  }
+  .hero .role{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--accent-2); font-size:14px; margin:0 0 22px;
+    animation: rise .6s ease .08s both;
+  }
+  .hero p.lede{
+    font-size:16.5px; color:var(--ink-muted); max-width:52ch; margin:0;
+    animation: rise .6s ease .16s both;
+  }
+  @keyframes rise{ from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+  @media (prefers-reduced-motion: reduce){
+    .hero h1, .hero .role, .hero p.lede{ animation:none; }
+  }
+
+  .spec-panel{
+    border:1px solid var(--line); background:var(--panel);
+    padding:18px 20px; border-radius:2px;
+  }
+  .spec-panel .spec-title{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.06em;
+    color:var(--ink-muted); margin:0 0 12px; text-transform:uppercase;
+    border-bottom:1px solid var(--line-soft); padding-bottom:10px;
+  }
+  .spec-row{
+    display:flex; justify-content:space-between; gap:12px;
+    font-size:13.5px; padding:6px 0; border-bottom:1px dashed var(--line-soft);
+  }
+  .spec-row:last-child{border-bottom:none;}
+  .spec-row .k{color:var(--ink-muted);}
+  .spec-row .v{font-family:'IBM Plex Mono', monospace; text-align:right;}
+  .spec-row .v.status{color:var(--accent-2); font-weight:500;}
+
+  section{padding:52px 0; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .sec-head{
+    display:flex; align-items:baseline; justify-content:space-between; gap:16px;
+    margin-bottom:10px;
+  }
+  .sec-head h2{
+    font-family:'Space Grotesk', sans-serif; font-size:22px; font-weight:600; margin:0;
+  }
+  .sec-head .sec-num{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-muted);}
+  .sec-sub{color:var(--ink-muted); font-size:14px; margin:0 0 28px; max-width:60ch;}
+
+  .pub{
+    border-top:1px solid var(--line-soft); padding:18px 0;
+    display:grid; grid-template-columns: 32px 1fr; gap:16px;
+  }
+  .pub:last-child{padding-bottom:0;}
+  .pub .idx{font-family:'IBM Plex Mono', monospace; color:var(--accent); font-size:13px; padding-top:2px;}
+  .pub .cite{font-size:15px;}
+  .pub .cite .authors{font-weight:600;}
+  .pub .venue{
+    margin-top:6px; font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--accent-2);
+  }
+  .pub .links a{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-muted);
+    margin-right:16px; text-decoration:none; border-bottom:1px solid var(--line);
+  }
+  .pub .links a:hover{color:var(--accent); border-color:var(--accent);}
+
+  .proj-group{margin-bottom:8px;}
+  .proj-group-label{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase;
+    letter-spacing:0.06em; color:var(--accent-2); margin:36px 0 4px;
+  }
+  .proj-group-label:first-child{margin-top:0;}
+  .proj{
+    border-top:1px solid var(--line-soft); padding:22px 0;
+    display:grid; grid-template-columns: 200px 1fr; gap:24px;
+  }
+  .proj:last-child{padding-bottom:0;}
+  .proj .meta{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-muted);}
+  .proj .meta .date{display:block; margin-bottom:8px;}
+  .proj .meta .tags{display:flex; flex-wrap:wrap; gap:6px;}
+  .proj .meta .tag{
+    border:1px solid var(--line); padding:2px 7px; border-radius:2px; font-size:11px;
+  }
+  .proj h3{font-family:'Space Grotesk', sans-serif; font-size:18px; margin:0 0 8px; font-weight:600;}
+  .proj p{margin:0 0 10px; color:var(--ink-muted); font-size:14.5px; max-width:60ch;}
+  .proj .role{font-size:13.5px; margin-bottom:10px;}
+  .proj .role .label{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--accent-2); margin-right:8px;}
+  .proj a.repo{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; text-decoration:none;
+    color:var(--ink); border-bottom:1px solid var(--accent); padding-bottom:1px;
+  }
+
+  @media (max-width:720px){
+    .proj{grid-template-columns:1fr;}
+    .proj .meta{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;}
+    .hero-grid{grid-template-columns:1fr;}
+    nav.toplinks{display:none;}
+    nav.toplinks.open{
+      display:flex; flex-direction:column; gap:14px;
+      position:absolute; top:100%; left:0; right:0; background:var(--paper);
+      border-bottom:1px solid var(--line); padding:16px 24px;
+    }
+    .nav-toggle{display:block;}
+    .topbar-inner{position:relative;}
+  }
+
+  .skill-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:24px 40px;}
+  .skill-group .k{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase;
+    letter-spacing:0.05em; color:var(--ink-muted); margin-bottom:8px;
+  }
+  .skill-group .v{font-size:14.5px;}
+  @media (max-width:600px){ .skill-grid{grid-template-columns:1fr;} }
+
+  footer{padding:44px 0 60px;}
+  .contact-row{display:flex; flex-wrap:wrap; gap:28px; margin-top:18px;}
+  .contact-row a{
+    font-family:'IBM Plex Mono', monospace; font-size:13px; text-decoration:none;
+    color:var(--ink); border-bottom:1px solid var(--line);
+  }
+  .contact-row a:hover{border-color:var(--accent); color:var(--accent);}
+  .fine{color:var(--ink-muted); font-size:12.5px; margin-top:36px; font-family:'IBM Plex Mono', monospace;}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="#top" class="brand">M. BRANCO NARDI</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">MENU</button>
+    <nav class="toplinks" id="navLinks">
+      <a href="#publications">Publications</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <h1>Manuel Branco Nardi</h1>
+        <p class="role">SOFTWARE ENGINEER — APPLIED AI &amp; SYSTEMS</p>
+        <p class="lede">I build software across the stack: from REST APIs and job queues to embedded firmware and AI-integrated real-time systems. Two first-author publications and a range of projects.</p>
+      </div>
+      <div class="spec-panel">
+        <p class="spec-title">Profile / Rev. 2026</p>
+        <div class="spec-row"><span class="k">Status</span><span class="v status">Open to Summer 2027 internships</span></div>
+        <div class="spec-row"><span class="k">Program</span><span class="v">B.S. Computer Science, UCF</span></div>
+        <div class="spec-row"><span class="k">Expected</span><span class="v">May 2028</span></div>
+        <div class="spec-row"><span class="k">GPA</span><span class="v">3.99 / 4.00</span></div>
+        <div class="spec-row"><span class="k">Location</span><span class="v">Orlando, FL</span></div>
+        <div class="spec-row"><span class="k">Publications</span><span class="v">2, first-author</span></div>
+        <div class="spec-row"><span class="k">Resume</span><span class="v"><a href="Manuel_Nardi_Resume.pdf" target="_blank" style="color:var(--accent-2); border-bottom:1px solid var(--accent-2);">Download (PDF) ↓</a></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <div class="sec-head">
+      <h2>Publications</h2>
+      <span class="sec-num mono">// 01</span>
+    </div>
+    <p class="sec-sub">Research on applying vision-language models to real-time, timing-constrained systems.</p>
+
+    <div class="pub">
+      <span class="idx">[1]</span>
+      <div>
+        <div class="cite">
+          <span class="authors">Nardi, M. B.</span>, Avalos, D., Zhao, G., Ibanez Peredo, M., &amp; Lee, C. (2026). Runtime Autonomous Driving Context Analysis using Vision Language Model and Lingua Franca.
+        </div>
+        <div class="venue">ReCPS Workshop, DATE 2026 Conference — first author</div>
+        <div class="links" style="margin-top:8px;">
+          <a href="Nardi_ReCPS2026_VLM_LF.pdf" target="_blank">Paper (PDF)</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <span class="idx">[2]</span>
+      <div>
+        <div class="cite">
+          <span class="authors">Nardi, M. B.</span>, &amp; Lee, C. (2026). Time-constrained Vision Language Model Inference using Semantic Caching for Autonomous Driving.
+        </div>
+        <div class="venue">TCRS Workshop, Embedded Systems Week (ESWEEK) 2026 — Barcelona, Spain — first author</div>
+        <div class="links" style="margin-top:8px;">
+          <a href="Nardi_TCRS2026_SemanticCaching.pdf" target="_blank">Paper (PDF)</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="sec-head">
+      <h2>Projects</h2>
+      <span class="sec-num mono">// 02</span>
+    </div>
+    <p class="sec-sub">Grouped by area: software development, embedded systems, and applied AI/robotics.</p>
+
+    <div class="proj-group-label">Software Development</div>
+
+    <div class="proj">
+      <div class="meta">
+        <span class="date">2026</span>
+        <div class="tags">
+          <span class="tag">TypeScript</span>
+          <span class="tag">React</span>
+          <span class="tag">Redis</span>
+          <span class="tag">Docker</span>
+        </div>
+      </div>
+      <div>
+        <h3>Workflow Automation Engine</h3>
+        <div class="role"><span class="label">ROLE</span>Builder</div>
+        <p>A visual, n8n-inspired workflow automation tool: a React drag-and-drop step builder on top of an Express API, with a Redis/BullMQ job queue and independent worker processes executing steps asynchronously (including AI steps via the Anthropic API). Workflows are JSON definitions with step-to-step variable interpolation, stored in SQLite. Built iteratively, exploring queue-based system architecture with Claude Code as a development partner.</p>
+        <a class="repo" href="https://github.com/MEbran06/JobQueue_Workflows" target="_blank">View on GitHub →</a>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="meta">
+        <span class="date">JAN – APR 2026</span>
+        <div class="tags">
+          <span class="tag">Unity</span>
+          <span class="tag">C#</span>
+        </div>
+      </div>
+      <div>
+        <h3>Soul-Bound</h3>
+        <div class="role"><span class="label">ROLE</span>Enemy AI &amp; Checkpoint Systems</div>
+        <p>A 3D horror-investigation game built with a team of five. Designed and implemented enemy AI behavior — detection, pursuit, and attack logic — and the checkpoint save/load system preserving player progress across the manor's three floors.</p>
+        <a class="repo" href="https://github.com/MEbran06/SoulBound" target="_blank">View on GitHub →</a>
+      </div>
+    </div>
+
+    <div class="proj-group-label">Embedded Systems</div>
+
+    <div class="proj">
+      <div class="meta">
+        <span class="date">OCT 2025</span>
+        <div class="tags">
+          <span class="tag">C / C++</span>
+          <span class="tag">ESP-IDF</span>
+          <span class="tag">Embedded ML</span>
+        </div>
+      </div>
+      <div>
+        <h3>LLM Lightshow</h3>
+        <div class="role"><span class="label">ROLE</span>Hackathon Team Member</div>
+        <p>Dual-ESP32S3 architecture performing real-time audio FFT preprocessing and on-device LLM inference. Trained a compact model mapping frequency features to LED states, driving synchronized effects through custom ESP-IDF firmware — a full embedded ML pipeline from dataset to deployment.</p>
+        <a class="repo" href="https://github.com/MEbran06/LLM-lightshow" target="_blank">View on GitHub →</a>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="meta">
+        <span class="date">2024</span>
+        <div class="tags">
+          <span class="tag">Arduino</span>
+          <span class="tag">C++</span>
+          <span class="tag">Bluetooth</span>
+        </div>
+      </div>
+      <div>
+        <h3>Arduino Musical Lightshow</h3>
+        <div class="role"><span class="label">ROLE</span>Builder</div>
+        <p>A MIDI-synchronized Christmas light show: an Arduino reads note data from an SD card, maps each note to a shift-register output driving a relay-controlled light. Extended with a second circuit — linked over Bluetooth — using an ultrasonic sensor to trigger the show automatically as people walk by.</p>
+        <a class="repo" href="https://github.com/MEbran06/Arduino-musical-lightshow" target="_blank">View on GitHub →</a>
+      </div>
+    </div>
+
+    <div class="proj-group-label">Applied AI &amp; Robotics</div>
+
+    <div class="proj">
+      <div class="meta">
+        <span class="date">JAN – MAR 2026</span>
+        <div class="tags">
+          <span class="tag">Lingua Franca</span>
+          <span class="tag">VLM</span>
+          <span class="tag">ChromaDB</span>
+        </div>
+      </div>
+      <div>
+        <h3>Time-Constrained VLM Inference</h3>
+        <div class="role"><span class="label">ROLE</span>Research — see Publications [1] / [2]</div>
+        <p>Designed a reactor-based pipeline integrating semantic caching with vision-language models for autonomous driving context analysis, using the Lingua Franca coordination language to reason explicitly about timing constraints on VLM inference.</p>
+        <a class="repo" href="#publications">See publications →</a>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="meta">
+        <span class="date">AUG 2024 – MAR 2026</span>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">Gazebo</span>
+          <span class="tag">ROS2</span>
+        </div>
+      </div>
+      <div>
+        <h3>Project Kestrel</h3>
+        <div class="role"><span class="label">ROLE</span>Simulation Team Lead</div>
+        <p>Autonomous drone project using the SORT multi-object tracking algorithm. Built and led development of a custom Gazebo simulation environment to test real-time tracking behavior against multiple moving targets, integrated with subsystem teams for full drone deployment.</p>
+        <a class="repo" href="https://github.com/MEbran06" target="_blank">View on GitHub →</a>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="skills">
+    <div class="sec-head">
+      <h2>Skills</h2>
+      <span class="sec-num mono">// 03</span>
+    </div>
+    <div class="skill-grid">
+      <div class="skill-group">
+        <div class="k">Languages</div>
+        <div class="v">Python, C/C++, Java, C#, JavaScript, TypeScript, SQL, Arduino</div>
+      </div>
+      <div class="skill-group">
+        <div class="k">Software Development</div>
+        <div class="v">React, Express, Node.js, REST APIs, SQL/SQLite, Redis, Docker, Git</div>
+      </div>
+      <div class="skill-group">
+        <div class="k">AI / ML</div>
+        <div class="v">LangChain, LangGraph, TensorFlow, PyTorch, prompt engineering, VLM integration</div>
+      </div>
+      <div class="skill-group">
+        <div class="k">Embedded &amp; Robotics</div>
+        <div class="v">ROS2, Gazebo, Lingua Franca, embedded firmware (ESP-IDF), real-time systems</div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="sec-head" style="margin-bottom:0;">
+      <h2>Contact</h2>
+      <span class="sec-num mono">// 04</span>
+    </div>
+    <div class="contact-row">
+      <a href="mailto:branconardimanuel@gmail.com">branconardimanuel@gmail.com</a>
+      <a href="https://github.com/MEbran06" target="_blank">github.com/MEbran06</a>
+      <a href="https://www.linkedin.com/in/manuel-branco-nardi-b399b4273" target="_blank">LinkedIn</a>
+      <a href="Manuel_Nardi_Resume.pdf" target="_blank">Resume (PDF)</a>
+    </div>
+    <p class="fine">Built as a static site — last updated 2026.</p>
+  </footer>
+
+</main>
+
+<script>
+  document.getElementById('navToggle').addEventListener('click', function(){
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+</script>
+
+</body>
+</html>
